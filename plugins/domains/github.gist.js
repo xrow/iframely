@@ -25,7 +25,7 @@ module.exports = {
             // No hash
             return cb(null, {
                 type: CONFIG.T.text_html,
-                rel: [CONFIG.R.reader, CONFIG.R.ssl],
+                rel: [CONFIG.R.reader, CONFIG.R.html5, CONFIG.R.ssl],
                 html: '<script type="text/javascript" src="https://gist.github.com/' + gistId +'.js"></script>'
             });
         }
@@ -80,7 +80,7 @@ module.exports = {
 
     tests: [{
         page: "https://gist.github.com/discover",
-        selector: ".creator a:nth-child(3)"
+        selector: "a.link-overlay"
     }, {
         skipMixins: ["og-image", "og-site"]
     },

@@ -58,7 +58,9 @@
         - memcached - https://github.com/3rd-Eden/node-memcached
         */
         CACHE_ENGINE: 'node-cache',
-        CACHE_TTL: 0, // In milliseconds. 0 for 'never expire' to let cache engine decide itself when to evict the record
+        CACHE_TTL: 0, // In milliseconds. 
+        // 0 = 'never expire' for memcached & node-cache to let cache engine decide itself when to evict the record
+        // 0 = 'no cache' for redis. Use high enough (e.g. 365*24*60*60*1000) ttl for similar 'never expire' approach instead
 
         /*
         // Redis cache options.
@@ -119,6 +121,7 @@
                 limit: 1,
                 maxwidth: 600
             }
+        /*
         }, {
             // Facebook https://developers.facebook.com/docs/plugins/oembed-endpoints
             re: [/^https:\/\/www\.facebook\.com\/plugins\/\w+\/oembed\.json/i],
@@ -126,6 +129,7 @@
                 // Skip script tag and fb-root div.
                 omitscript: true
             }
+        */
          }],
 
         /*
@@ -156,6 +160,8 @@
                 hide_media: false,
                 hide_thread: false,
                 omit_script: false,
+                center: false,
+                // dnt: true,                
                 cache_ttl: 100 * 365 * 24 * 3600 // 100 Years.
             },
             readability: {
@@ -180,6 +186,7 @@
             camoProxy: {
                 camo_proxy_key: "INSERT YOUR VALUE",
                 camo_proxy_host: "INSERT YOUR VALUE"
+                // ssl_only: true // will only proxy non-ssl images
             },
             */
 
